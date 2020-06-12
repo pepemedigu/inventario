@@ -1,0 +1,17 @@
+{% extends 'iventarioav/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <h2>Reports</h2>
+        {% for report in reports %}
+        <ul>
+            <li>
+                <h3>{{ report }}</h3>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+{% endblock %}
+ {% block scripts %}
+
+ {% endblock %}

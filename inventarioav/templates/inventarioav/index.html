@@ -1,28 +1,48 @@
-{% extends 'salasadobe/base.html' %}
+{% extends 'inventarioav/base.html' %}
 {% load static %}
 {% block content %}
     <div class="row">
-        <table data-toggle="table">
-          <thead>
-            <tr>
-              <th>Item ID</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Item 1</td>
-              <td>$1</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Item 2</td>
-              <td>$2</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="container">
+            <ul class="nav nav-tabs" id="campusTab" role="tablist">
+            {% for campu in campus %}
+             <li class="nav-item" role="presentation">
+                <a class="nav-link" id="{{ campu.codigo }}-tab" data-toggle="tab" href="#{{ campu.codigo }}" role="tab" aria-controls="{{ campu.codigo }}" aria-selected="false">{{ campu }}</a>
+            </li>
+            {% endfor %}
+             </ul>
+            <div class="tab-content" id="campusTabContent">
+            {% for campu in campus %}
+                <div class="tab-pane fade" id="{{ campu.codigo }}" role="tabpanel" aria-labelledby="{{ campu.codigo }}-tab">
+                    <div class="row">
+                        {% for edificio in campu.edificio_set.all %}
+                        <div class="col-4">
+                            <div class="list-group" id="{{edificio.codigo}}-list-tab" role="tablist">
+                                <a class="list-group-item list-group-item-action" id="list-{{edificio.codigo}}-list" data-toggle="list" href="#list-{{edificio.codigo}}" role="tab" aria-controls="{{edificio.codigo}}">{{edificio}}</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% for edificio in campu.edificio_set.all %}
+                        <div class="col-8">
+                            <div class="tab-content" id="nav-tabContent">
+                              <div class="tab-pane fade" id="list-{{edificio.codigo}}" role="tabpanel" aria-labelledby="list-{{edificio.codigo}}-list">
+                                  <ul class="list-group">
+                                      {% for dependencia in edificio.dependencia_set.all %}
+                                      <li class="list-group-item">
+                                           <a class="btn btn-secondary" role="button" href="{% url 'view' dependencia.pk %}">
+                                                {{dependencia}}<i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                            </a>
+                                      </li>
+                                      {% endfor %}
+                                  </ul>
+                              </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
  {% block scripts %}

@@ -15,23 +15,25 @@ edificios = Edificio.objects.all()
 dependencias = Dependencia.objects.all()
 
 @login_required()
-def index(request, template_name='inventario/index.html'):
+def index(request, template_name='inventarioav/index.html'):
     usuario = request.user
-    return render(request, template_name, {'campus': campus, 'edificios': edificios, 'dependencias': dependencias,  'usuario': usuario})
+    return render(request, template_name, {'campus': campus,  'usuario': usuario})
 
 @login_required()
-def view(request, pk, template_name='inventario/view.html'):
+def view(request, pk, template_name='inventarioav/view.html'):
     usuario = request.user
     dependencia = get_object_or_404(Dependencia, pk=pk)
     equipos = dependencia.equipo_set.all()
     return render(request, template_name, {'dependencia': dependencia, 'equipos': equipos, 'usuario': usuario})
 
 @login_required()
-def reports(request, template_name='inventario/reports.html'):
+def reports(request, template_name='inventarioav/reports.html'):
     usuario = request.user
-    return render(request, template_name, {'usuario': usuario})
+    reports = []
+    return render(request, template_name, {'reports': reports,'usuario': usuario})
 
 @login_required()
-def orders(request, template_name='inventario/orders.html'):
+def orders(request, template_name='inventarioav/orders.html'):
     usuario = request.user
-    return render(request, template_name, {'usuario': usuario})
+    orders = []
+    return render(request, template_name, {'orders': orders,'usuario': usuario})

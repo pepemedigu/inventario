@@ -36,12 +36,16 @@ class Edificio(models.Model):
         return self.nombre
 
 class TipoDependencia(models.IntegerChoices):
-    AULA = 1, _('Aula')
-    SALA_REUNIONES = 2, _('Sala de Reuniones')
-    SALA_TELEDOCENCIA = 3, _('Sala de Teledocencia')
-    AULA_GRADOS = 4, _('Aula de Grados')
-    SALON_ACTOS = 5, _('Salón de Actos')
-    DESPACHO = 6, _('Despacho')
+    AULA = 1, _('Aula de Docencia')
+    AULA_SEMIPRESENCIAL = 2, _('Aula de Docencia Semipresencial')
+    SALA_REUNIONES = 3, _('Sala de Reuniones')
+    SALA_REUNIONES_VIDEOCONFERENCIA = 4, _('Sala de Reuniones Por Videoconferencia')
+    SALA_TELEPRESENCIA = 5, _('Sala de Telepresencia')
+    SALA_TELEDOCENCIA_DIRECTO = 6, _('Sala de Teledocencia en Directo')
+    ESTUDIO_GRABACION_TELEDOCENCIA = 7, _('Estudio de Grabación de Teledocencia')
+    AULA_GRADOS = 8, _('Aula de Grados')
+    SALON_ACTOS = 9, _('Salón de Actos')
+    DESPACHO = 10, _('Despacho')
 
 class Dependencia(models.Model):
     codigo = models.CharField(max_length=50, unique=True)
@@ -55,12 +59,28 @@ class Dependencia(models.Model):
     def __str__(self):
         return self.nombre
 
+    def equipos(self):
+        return self.equipos.all()
+    def equipos_video(self):
+        return self.equipo_set.filter(tipo="1")
+    def equipos_audio(self):
+        return self.equipo_set.filter(tipo="2")
+    def equipos_control(self):
+        return self.equipo_set.filter(tipo="3")
+    def equipos_hardware(self):
+        return self.equipo_set.filter(tipo="4")
+    def equipos_software(self):
+        return self.equipo_set.filter(tipo="5")
+    def equipos_infraestructura(self):
+        return self.equipo_set.filter(tipo="6")
+
 class TipoEquipo(models.IntegerChoices):
     VIDEO = 1, _('Vídeo')
     AUDIO = 2, _('Audio')
     CONTROL = 3, _('Control')
-    EQUIPO = 4, _('Equipo')
+    HARDWARE = 4, _('Hardware')
     SOFTWARE = 5, _('Software')
+    INFRAESTRUCTURA= 6, _('Infraestructura')
 
 class ModeloEquipo(models.Model):
     codigo = models.CharField(max_length=50, unique=True)
@@ -92,6 +112,7 @@ class Equipo(models.Model):
 
     def __str__(self):
         return self.nombre
+
 
 class TipoConexion(models.IntegerChoices):
     UTP = 1, _('Cable UTP')

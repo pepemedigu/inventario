@@ -1,0 +1,16 @@
+{% extends 'salasadobe/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <h2>Orders</h2>
+        {% for order in orders %}
+        <ul>
+            <li>
+                <h3>{{ order }}</h3>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+{% endblock %}
+ {% block scripts %}
+ {% endblock %}
