@@ -1,0 +1,16 @@
+{% extends 'salasadobe/base.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-6">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">¡Error!</h4>
+                    <p class="text-center">
+                        Error: {{error}}
+                    </p>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

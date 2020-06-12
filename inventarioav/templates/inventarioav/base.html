@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Inventario Audiovisuales</title>
+<meta charset="utf-8">
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'inventarioav/images/favicon.ico' %}"/>
+<link rel="stylesheet" href="{% static 'inventarioav/bootstrap/css/bootstrap.min.css' %}">
+<script src="https://kit.fontawesome.com/e283c12a28.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'inventarioav/css/style.css' %}">
+<link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="http://www.uca.es">
+    <img src="{% static 'inventarioav/images/watermark_uca.png' %}" height="30" alt="">
+  </a>
+  {% if user.is_authenticated %}
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link btn btn-light btn-sm" role="button" href="/inventarioav"> <i class="fas fa-home"> </i> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-light btn-sm" target="_blank" href="/inventarioav/reports"> Informes </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-light btn-sm" target="_blank" href="/inventarioav/orders"> Informes </a>
+      </li>
+    </ul>
+  </div>
+  <p class="text-right">
+    <i class="fas fa-user"></i> {{usuario.username}}
+    {% if user.is_staff %}
+    <a class="btn btn-light btn-sm" role="button" target="_blank" href="/admin">
+      <i class="fas fa-cog"></i>
+    </a>
+    {% endif %}
+    <a class="btn btn-light btn-sm" role="button" href="{% url 'logout' %}">
+      <i class="fas fa-power-off"></i>
+    </a>
+  </p>
+  {% endif %}
+</nav>
+
+<div class="container">
+ {% block content %}
+ {% endblock %}
+</div>
+
+<script src="{% static 'inventarioav/jquery/js/jquery-3.5.0.min.js' %}"></script>
+<script src="{% static 'inventarioav/popper/js/popper.min.js' %}"></script>
+<script src="{% static 'inventarioav/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+ {% block scripts %}
+ {% endblock %}
+</body>
+</html>

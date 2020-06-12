@@ -1,0 +1,45 @@
+/* BASIC */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Raleway&family=Ubuntu&display=swap');
+
+
+.hidden {
+    display: none;;
+}
+.card-clase {
+  margin: 15px;
+  width: 18rem;
+}
+
+.jumbotron {
+  position: relative;
+  background:none;
+  margin-bottom: 0px;
+}
+.jumbotron:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../images/fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 90%;
+    opacity : 0.1;
+    z-index: -1;
+    margin-bottom: 0px;
+}
+
+.jumbotron h1 {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 4rem;
+}
+.jumbotron lead {
+  font-family: 'Raleway', sans-serif;
+}
+
+.sala {
+    font-family: 'Fredoka One', sans-serif;
+}

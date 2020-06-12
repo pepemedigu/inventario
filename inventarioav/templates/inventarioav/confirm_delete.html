@@ -1,0 +1,27 @@
+{% extends 'salasadobe/base.html' %}
+{% load static %}
+{% block content %}
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-dark " role="alert">
+                <form method="post">
+                <h4 class="alert-heading">Borrar sala</h4>
+                {% csrf_token %}
+                <div class="form-row">
+                    <p>
+                        ¿ Está seguro que quiere borrar la sala: <b>{{sala}}</b> ?
+                    </p>
+                    <hr>
+                </div>
+                <div>
+                    <p class="text-center">
+                        <button type="submit" class="btn btn-danger">
+                        Borrar <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </p>
+                </div>
+                </form>
+            </div>
+        </div>
+
+
+{% endblock %}

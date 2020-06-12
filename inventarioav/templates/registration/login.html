@@ -1,0 +1,40 @@
+{% extends '../inventarioav/base.html' %}
+{% block content %}
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-6">
+                <div class="alert alert-dark" role="alert">
+                    {% if form.errors %}
+                    <p>Su usuario y clave no son correctos. Por favor, int&eacute;ntelo de nuevo.</p>
+                    {% endif %}
+                    {% if next %}
+                        {% if user.is_authenticated %}
+                        <p>Su cuenta no tiene acceso a esta p&aacute;gina. Para acceder,
+                        por favor introduzca sus credenciales de acceso.</p>
+                        {% else %}
+                        <p>Por favor, identif&iacute;quese para acceder a esta p&aacute;gina</p>
+                        {% endif %}
+                    {% endif %}
+                    <hr>
+                    <form method="post" action="{% url 'login' %}">
+
+                    {% csrf_token %}
+                    <table>
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    </table>
+                    <hr>
+                    <input type="submit" value="Entrar">
+                    <input type="hidden" name="next" value="{{ next }}">
+                    </form>
+                    {# Assumes you setup the password_reset view in your URLconf #}
+                    {#<p><a href="{% url 'password_reset' %}">¿Olvid&oacute; su contrase&ntilde;a?</a></p>#}
+                </div>
+             </div>
+        </div>
+{% endblock %}
