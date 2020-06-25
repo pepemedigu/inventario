@@ -46,6 +46,7 @@ ALLOWED_HOSTS = SERVERS
 INSTALLED_APPS = [
     'inventarioav',
     'widget_tweaks',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -194,3 +195,5 @@ if 'test' in sys.argv or 'runserver' in sys.argv:
     SECURE_SSL_REDIRECT = False
 else:
     SECURE_SSL_REDIRECT = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

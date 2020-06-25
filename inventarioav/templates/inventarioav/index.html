@@ -28,7 +28,7 @@
                                   <ul class="list-group">
                                       {% for dependencia in edificio.dependencia_set.all %}
                                       <li class="list-group-item">
-                                           <a class="btn btn-secondary" role="button" href="{% url 'view' dependencia.pk %}">
+                                           <a class="btn btn-secondary" role="button" href="{% url 'dependencia_view' dependencia.pk %}">
                                                 {{dependencia}}<i class="fa fa-chevron-right" aria-hidden="true"></i>
                                             </a>
                                       </li>
@@ -45,6 +45,3 @@
         </div>
     </div>
 {% endblock %}
- {% block scripts %}
-<script src="{% static 'salasadobe/js/index.js' %}" ></script>
- {% endblock %}

@@ -1,0 +1,41 @@
+        <div id=equipos_tipo-{{tipo_equipo}} class="card card-clase" style="width: 32rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    V&iacute;deo
+                    <a class="btn btn-secondary btn-sm" role="button" href="#">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    </a>
+                </h5>
+
+                <ul class="list-group">
+                    {% for equipo in dependencia.equipos_video %}
+                    <li class="list-group-item">
+                        <h6>
+                            {{equipo}}
+                            <a class="btn btn-secondary btn-sm " role="button" data-toggle="collapse" href="#collapse-equipo{{equipo.id}}" aria-expanded="false" aria-controls="collapseExample" >
+                                <i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-secondary btn-sm float-right" role="button" href="#">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </h6>
+
+                        <hr>
+                        <ul>
+                            <li>Nombre: {{equipo.nombre}}</li>
+                            <li>Modelo: {{equipo.modelo}}</li>
+                            <li>Número de serie: {{equipo.numero_serie}}</li>
+                            <li>Número de inventario: {{equipo.numero_inventario}}</li>
+                            <li>Código de suministro: {{equipo.codigo_suministro}}</li>
+                            <li>Fecha de suministro: {{equipo.fecha_suministro}}</li>
+                            <li>Fecha de instalación: {{equipo.fecha_instalacion}}</li>
+                            <li>Fecha fin de garantía: {{equipo.fecha_fin_garantia}}</li>
+                            <li>Comentarios: {{equipo.comentarios}}</li>
+                        </ul>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>

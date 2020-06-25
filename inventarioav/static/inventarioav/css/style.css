@@ -5,9 +5,9 @@
 .hidden {
     display: none;;
 }
-.card-clase {
-  margin: 15px;
-  width: 18rem;
+
+.card {
+  border-radius: 0;
 }
 
 .jumbotron {
@@ -39,7 +39,39 @@
 .jumbotron lead {
   font-family: 'Raleway', sans-serif;
 }
+.card-body.card-body-equipo {
+    padding: 10px;
+    width: 26rem;
+    margin-bottom: 10px;
+}
 
-.sala {
-    font-family: 'Fredoka One', sans-serif;
+.card.card-comentario-equipo {
+    border-width: 0px;
+    style="width: 26rem;
+}
+
+.collapse.collapse-equipo {
+    margin-top: 20px;
+}
+.btn-sm.equipo {
+    padding: .05rem .30rem;
+}
+
+.h6-equipo {
+  margin-bottom: 0px;
+}
+
+.btn.btn-equipo {
+    margin-left: 5px;
+    padding: .10rem .3rem;
+    font-size: .8rem;
+    line-height: 1.
+}
+
+.list-group-item.list-group-item-equipo {
+    padding: 5px;
+}
+
+.list-group-item.list-group-item-conexiones {
+    padding: 5px;
 }

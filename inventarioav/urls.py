@@ -18,7 +18,9 @@ from inventarioav import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('view/<int:pk>/', views.view, name='view'),
+    path('dependencia/view/<int:pk>/', views.dependencia_view, name='dependencia_view'),
+    path('dependencia/list_equipos/<int:pk>/<int:tipo_equipo>', views.dependencia_list_equipos, name='dependencia_list_equipos'),
+    path('dependencia/create_equipo/<int:pk>/<int:tipo_equipo>', views.dependencia_create_equipo, name='dependencia_create_equipo'),
     path('reports', views.reports, name='reports'),
     path('orders', views.reports, name='orders'),
 ]

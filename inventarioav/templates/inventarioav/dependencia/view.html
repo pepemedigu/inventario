@@ -1,0 +1,33 @@
+{% extends 'inventarioav/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row justify-content-md-left">
+       <h2>{{dependencia}}</h2>
+    </div>
+    <div class="row justify-content-md-left">
+        <div id="equipos-tipo-1" class="card" style="width: 32rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    V&iacute;deo
+                    <button type="button" class="btn btn-secondary btn-sm btn-equipo openModal" data-toggle="modal" data-href="/inventarioav/dependencia/create_equipo/{{dependencia.id}}/1" tipo-equipos="1">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    </button>
+                </h5>
+
+                <ul class="list-group">
+                    {% include "inventarioav/dependencia/list_equipos.html" with tipo_equipo='1' equipos=dependencia.equipos_video %}
+                </ul>
+
+            </div>
+        </div>
+        {% include "inventarioav/dependencia/create_equipo_modal.html" with tipo_equipo='1' dependencia=dependencia %}
+    </div>
+    <div id="modal-equipos-1">
+    </div>
+{% endblock %}
+ {% block scripts %}
+<script src="{% static 'inventarioav/js/view.js' %}"></script>
+ {% endblock %}
+
+
